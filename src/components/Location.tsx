@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import { Clock, MapPin, Navigation, Phone } from 'lucide-react'
 import Logo from './Logo'
 import { TikTokIcon } from './icons'
+import Cane from './Cane'
+import { useOpenStatus } from '../hooks/useOpenStatus'
 import { site } from '../data/site'
 
 export function FinalCta() {
   return (
     <section aria-labelledby="cta-title" className="grain relative overflow-hidden bg-forest py-24 text-center text-cream lg:py-32">
       <Logo className="pointer-events-none absolute top-1/2 left-1/2 size-[640px] -translate-x-1/2 -translate-y-1/2 text-cream/[0.04]" ring />
+      <Cane className="pointer-events-none absolute -right-8 bottom-0 hidden h-[120%] text-gold/10 md:block" />
       <div className="container-x relative" data-reveal>
         <p className="eyebrow justify-center text-gold">Rua Fidalga, 23</p>
         <h2 id="cta-title" className="display mx-auto mt-6 max-w-4xl text-[clamp(2.6rem,6vw,5.4rem)]">
@@ -33,6 +36,7 @@ export default function Location() {
   }, [])
 
   const { address } = site
+  const status = useOpenStatus()
   return (
     <section id="contato" className="bg-paper py-24 lg:py-36">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
@@ -62,6 +66,12 @@ export default function Location() {
             <div className="flex gap-4 py-5">
               <dt><Clock className="mt-0.5 size-5 text-wine" aria-label="Horários" /></dt>
               <dd className="w-full">
+                {status && (
+                <p className={`mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${status.open ? 'bg-moss/15 text-moss' : 'bg-wine/10 text-wine'}`}>
+                  <span className={`size-1.5 rounded-full ${status.open ? 'bg-moss' : 'bg-wine'}`} />
+                  {status.label} · {status.detail}
+                </p>
+                )}
                 <ul className="space-y-1.5">
                   {site.hours.map((h) => (
                     <li key={h.days} className="flex justify-between gap-4">

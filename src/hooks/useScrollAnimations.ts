@@ -44,6 +44,7 @@ export function useScrollAnimations() {
           )
         })
       })
+      ScrollTrigger.refresh()
     }
 
     const idle = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 200))

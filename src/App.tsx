@@ -3,6 +3,8 @@ import Hero from './components/Hero'
 import Highlights from './components/Highlights'
 import About from './components/About'
 import Experiences from './components/Experiences'
+import Drinks from './components/Drinks'
+import MobileBar from './components/MobileBar'
 import MenuSection from './components/MenuSection'
 import Gallery from './components/Gallery'
 import Reviews from './components/Reviews'
@@ -24,6 +26,7 @@ export default function App() {
         <Highlights />
         <About />
         <Experiences />
+        <Drinks />
         <MenuSection />
         <Gallery />
         <Reviews />
@@ -32,6 +35,7 @@ export default function App() {
         <Location />
       </main>
       <Footer />
+      <MobileBar />
     </>
   )
 }

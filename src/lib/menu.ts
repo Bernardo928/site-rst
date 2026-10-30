@@ -11,3 +11,5 @@ export function openMenu(e: MouseEvent<HTMLAnchorElement>) {
   document.getElementById('cardapio')?.scrollIntoView({ behavior: 'smooth' })
   history.replaceState(null, '', '#cardapio')
 }
+
+export const menuLinkProps = site.links.canvaMenu ? { target: '_blank', rel: 'noopener noreferrer' } : {}

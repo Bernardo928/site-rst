@@ -1,38 +1,25 @@
-import { useState } from 'react'
+import { useState, type CSSProperties } from 'react'
 import { Expand } from 'lucide-react'
 import Picture from './Picture'
 import Lightbox, { type LightboxItem } from './Lightbox'
 import { TikTokIcon } from './icons'
+import images from '../data/images.json'
 import { site } from '../data/site'
 
 // Para ampliar a galeria: coloque a foto em assets-src/photos, rode `npm run images`
 // e acrescente um item aqui.
-const photos: (LightboxItem & { tile: string })[] = [
-  {
-    name: 'detalhe-letreiro',
-    alt: 'Janela do mezanino com o letreiro vermelho da Casa Marafo',
-    caption: 'O letreiro que acende a Rua Fidalga.',
-    tile: 'sm:col-span-4 sm:row-span-2 aspect-[610/280] sm:aspect-auto',
-  },
-  {
-    name: 'detalhe-porta',
-    alt: 'Porta de entrada com a cana-de-açúcar gravada no vidro',
-    caption: 'A cana gravada na porta — de onde vem a cachaça.',
-    tile: 'sm:col-span-2 sm:row-span-4 aspect-[230/500] sm:aspect-auto',
-  },
-  {
-    name: 'detalhe-samambaias',
-    alt: 'Samambaias suspensas e varal de lâmpadas no quintal',
-    caption: 'Samambaias e luzes no quintal.',
-    tile: 'sm:col-span-2 sm:row-span-2 aspect-[760/340] sm:aspect-auto',
-  },
-  {
-    name: 'detalhe-ripado',
-    alt: 'Marquise de ripado de madeira iluminada por baixo',
-    caption: 'O ripado de madeira que abraça a fachada.',
-    tile: 'sm:col-span-2 sm:row-span-2 aspect-[1215/250] sm:aspect-auto',
-  },
+const photos: LightboxItem[] = [
+  { name: 'detalhe-letreiro', alt: 'Janela do mezanino com o letreiro vermelho da Casa Marafo', caption: 'O letreiro que acende a Rua Fidalga.' },
+  { name: 'detalhe-porta', alt: 'Porta de entrada com a cana-de-açúcar gravada no vidro', caption: 'A cana gravada na porta — de onde vem a cachaça.' },
+  { name: 'detalhe-samambaias', alt: 'Samambaias suspensas e varal de lâmpadas no quintal', caption: 'Samambaias e luzes no quintal.' },
+  { name: 'detalhe-ripado', alt: 'Marquise de ripado de madeira iluminada por baixo', caption: 'O ripado de madeira que abraça a fachada.' },
 ]
+
+// Galeria "justificada": cada linha tem altura única e cada foto ocupa largura
+// proporcional ao seu formato — nenhuma foto é esticada além do tamanho original.
+const rows: (number | 'tiktok')[][] = [[0, 1, 2], [3, 'tiktok']]
+const TIKTOK_RATIO = 2.2
+const ratio = (i: number) => images[photos[i].name].w / images[photos[i].name].h
 
 export default function Gallery() {
   const [index, setIndex] = useState<number | null>(null)
@@ -47,49 +34,63 @@ export default function Gallery() {
               Um pouco da nossa <em className="text-wine italic">atmosfera.</em>
             </h2>
           </div>
-          <p className="max-w-md text-ink/65 md:justify-self-end">
-            Luz quente, madeira, verde e a cana-de-açúcar em cada detalhe. Toque numa foto para ampliar.
+          <p className="max-w-md text-ink/70 md:justify-self-end">
+            Luz baixa, madeira, plantas e a cana-de-açúcar nos detalhes. Toque numa foto para ver maior.
           </p>
         </div>
 
-        <ul className="mt-14 grid grid-cols-1 gap-4 sm:auto-rows-[90px] sm:grid-cols-6 lg:auto-rows-[110px]" data-stagger>
-          {photos.map((p, i) => (
-            <li key={p.name} className={p.tile}>
-              <button
-                type="button"
-                onClick={() => setIndex(i)}
-                aria-label={`Ampliar: ${p.alt}`}
-                className="group relative block h-full w-full overflow-hidden rounded-[18px] bg-forest"
-              >
-                <Picture
-                  name={p.name}
-                  alt={p.alt}
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                  className="block h-full"
-                  imgClassName="h-full w-full object-cover transition-transform duration-[1.4s] ease-(--ease-soft) group-hover:scale-[1.06]"
-                />
-                <span className="absolute inset-0 bg-forest/0 transition-colors duration-500 group-hover:bg-forest/25" />
-                <span className="absolute right-4 bottom-4 grid size-10 scale-75 place-items-center rounded-full bg-cream text-forest opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100">
-                  <Expand className="size-4" />
-                </span>
-              </button>
-            </li>
+        <div className="mt-14 space-y-4" data-stagger>
+          {rows.map((row, r) => (
+            <ul key={r} className="flex flex-col gap-4 sm:flex-row">
+              {row.map((cell) => {
+                const ar = cell === 'tiktok' ? TIKTOK_RATIO : ratio(cell)
+                const style = { '--ar': ar, aspectRatio: String(ar) } as CSSProperties
+                if (cell === 'tiktok')
+                  return (
+                    <li key="tiktok" style={style} className="sm:flex-[var(--ar)_1_0%]">
+                      <a
+                        href={site.links.tiktok}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="grain group flex h-full flex-col justify-between overflow-hidden rounded-[18px] bg-forest p-6 text-cream transition-colors duration-500 hover:bg-moss"
+                      >
+                        <TikTokIcon className="size-7 text-gold" />
+                        <div>
+                          <p className="font-serif text-2xl font-light">Mais da casa no TikTok</p>
+                          <p className="mt-1 text-sm text-cream/65">Vídeos de samba e drinks em @casamarafo ↗</p>
+                        </div>
+                      </a>
+                    </li>
+                  )
+                const p = photos[cell]
+                return (
+                  <li key={p.name} style={style} className={`sm:flex-[var(--ar)_1_0%] ${ar < 1 ? 'mx-auto w-2/3 sm:mx-0 sm:w-auto' : ''}`}>
+                    <button
+                      type="button"
+                      onClick={() => setIndex(cell)}
+                      aria-label={`Ver maior: ${p.alt}`}
+                      className="group relative block h-full w-full overflow-hidden rounded-[18px] bg-forest"
+                    >
+                      <Picture
+                        name={p.name}
+                        alt={p.alt}
+                        sizes="(min-width: 640px) 50vw, 100vw"
+                        className="block h-full"
+                        imgClassName="h-full w-full object-cover transition-transform duration-[1.4s] ease-(--ease-soft) group-hover:scale-[1.05]"
+                      />
+                      <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-ink/80 to-transparent p-4 text-left opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100">
+                        <span className="font-serif text-sm text-cream italic">{p.caption}</span>
+                        <span className="grid size-9 shrink-0 place-items-center rounded-full bg-cream text-forest">
+                          <Expand className="size-4" />
+                        </span>
+                      </span>
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
           ))}
-          <li className="aspect-[2/1] sm:col-span-6 sm:row-span-2 sm:aspect-auto">
-            <a
-              href={site.links.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="grain group relative flex h-full flex-col justify-between overflow-hidden rounded-[18px] bg-forest p-6 text-cream transition-colors duration-500 hover:bg-moss"
-            >
-              <TikTokIcon className="size-7 text-gold" />
-              <div>
-                <p className="font-serif text-2xl font-light sm:text-3xl">Mais momentos no TikTok</p>
-                <p className="mt-1 text-sm text-cream/60">@casamarafo ↗</p>
-              </div>
-            </a>
-          </li>
-        </ul>
+        </div>
       </div>
       <Lightbox items={photos} index={index} onChange={setIndex} />
     </section>

@@ -1,7 +1,7 @@
 import Logo from './Logo'
 import { TikTokIcon } from './icons'
 import { nav, site } from '../data/site'
-import { menuHref, openMenu } from '../lib/menu'
+import { menuHref, menuLinkProps, openMenu } from '../lib/menu'
 
 export default function Footer() {
   const ext = { target: '_blank', rel: 'noopener noreferrer' }
@@ -50,7 +50,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href={menuHref} onClick={openMenu} {...(site.links.canvaMenu ? ext : {})} className="transition-colors hover:text-gold-soft">
+              <a href={menuHref} onClick={openMenu} {...menuLinkProps} className="transition-colors hover:text-gold-soft">
                 Cardápio
               </a>
             </li>

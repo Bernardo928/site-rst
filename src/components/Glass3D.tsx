@@ -116,15 +116,18 @@ export default function Glass3D() {
       raf = requestAnimationFrame(tick)
       if (!visible) return
       const t = clock.getElapsedTime()
-      const scroll = Math.min(window.scrollY / window.innerHeight, 1)
-      group.rotation.y = t * 0.25 + scroll * 1.4 + pointer.x * 0.5
+      // progresso da seção na tela: 0 entrando por baixo, 1 saindo por cima
+      const r = el.getBoundingClientRect()
+      const scroll = Math.min(Math.max(1 - r.bottom / (window.innerHeight + r.height), 0), 1)
+      group.rotation.y = t * 0.25 + scroll * 2.4 + pointer.x * 0.5
       group.rotation.x = 0.12 + pointer.y * 0.15
-      group.position.y = Math.sin(t * 0.9) * 0.08 - scroll * 0.4
+      group.position.y = Math.sin(t * 0.9) * 0.08 - (scroll - 0.5) * 0.3
       ice.forEach((m, i) => (m.position.y += Math.sin(t * 1.2 + i * 2) * 0.0008))
       renderer.render(scene, camera)
     }
     tick()
     el.style.opacity = '1'
+    el.dataset.ready = 'true'
 
     return () => {
       cancelAnimationFrame(raf)

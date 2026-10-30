@@ -12,7 +12,11 @@ const pages: LightboxItem[] = menu.map((c) => ({
 export default function MenuSection() {
   const [tab, setTab] = useState(0)
   const [page, setPage] = useState<number | null>(null)
+  const [veganOnly, setVeganOnly] = useState(false)
   const cat = menu[tab]
+  const groups = cat.groups
+    .map((g) => ({ ...g, items: veganOnly ? g.items.filter((it) => it.vegan) : g.items }))
+    .filter((g) => g.items.length)
 
   return (
     <section id="cardapio" className="bg-paper py-24 lg:py-36">
@@ -24,7 +28,8 @@ export default function MenuSection() {
           </h2>
         </div>
 
-        <div role="tablist" aria-label="Categorias do cardápio" className="-mx-4 mt-12 flex snap-x gap-2 overflow-x-auto px-4 pb-2 sm:justify-center [scrollbar-width:none]">
+        <div className="mt-12 flex flex-col items-center gap-5">
+        <div role="tablist" aria-label="Categorias do cardápio" className="-mx-4 flex max-w-full snap-x gap-2 overflow-x-auto px-4 pb-2 sm:justify-center [scrollbar-width:none]">
           {menu.map((c, i) => (
             <button
               key={c.id}
@@ -41,9 +46,20 @@ export default function MenuSection() {
             </button>
           ))}
         </div>
+          <label className="inline-flex cursor-pointer items-center gap-3 text-sm text-forest/80 select-none">
+            <input type="checkbox" className="peer sr-only" checked={veganOnly} onChange={(e) => setVeganOnly(e.target.checked)} />
+            <span className="relative h-6 w-11 rounded-full bg-forest/15 transition-colors peer-checked:bg-moss peer-focus-visible:outline-2 peer-focus-visible:outline-gold after:absolute after:top-0.5 after:left-0.5 after:size-5 after:rounded-full after:bg-paper after:shadow after:transition-transform peer-checked:after:translate-x-5" />
+            <Leaf className="size-4 text-moss" /> Só opções veganas
+          </label>
+        </div>
 
-        <div id="menu-panel" role="tabpanel" aria-labelledby={`tab-${cat.id}`} key={cat.id} className="mx-auto mt-12 max-w-5xl" style={{ animation: 'rise .7s var(--ease-soft) both' }}>
-          {cat.groups.map((g) => (
+        <div id="menu-panel" role="tabpanel" aria-labelledby={`tab-${cat.id}`} key={cat.id + veganOnly} className="mx-auto mt-12 max-w-5xl" style={{ animation: 'rise .7s var(--ease-soft) both' }}>
+          {groups.length === 0 && (
+            <p className="py-10 text-center text-ink/65">
+              Nenhuma opção vegana em {cat.label.toLowerCase()} por enquanto. Veja as abas Entradas, Porções e Lanches.
+            </p>
+          )}
+          {groups.map((g) => (
             <div key={g.title} className="mb-14 last:mb-0">
               <div className="mb-6 flex flex-col gap-1 border-b border-forest/15 pb-4 sm:flex-row sm:items-end sm:justify-between">
                 <h3 className="font-serif text-2xl text-forest">{g.title}</h3>

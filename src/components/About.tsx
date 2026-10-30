@@ -2,13 +2,15 @@ import { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Picture from './Picture'
 import Logo from './Logo'
+import Cane from './Cane'
 import { site } from '../data/site'
 
 export default function About() {
   const [open, setOpen] = useState(false)
 
   return (
-    <section id="sobre" className="bg-paper py-24 lg:py-36">
+    <section id="sobre" className="relative overflow-hidden bg-paper py-24 lg:py-36">
+      <Cane className="pointer-events-none absolute -top-10 right-0 hidden h-[90%] text-forest/[0.06] lg:block" />
       <div className="container-x grid items-center gap-16 lg:grid-cols-12 lg:gap-10">
         <div className="relative lg:col-span-7" data-reveal>
           <div className="overflow-hidden rounded-[28px]">

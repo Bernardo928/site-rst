@@ -26,10 +26,13 @@ export const site = {
   },
   // Horários conforme a ficha do Google (a segunda-feira aparecia fechada por Dia de Finados).
   hours: [
-    { days: 'Quarta e quinta', time: '17h — 00h' },
-    { days: 'Sexta e sábado', time: '17h — 01h' },
+    { days: 'Quarta e quinta', time: '17h às 00h' },
+    { days: 'Sexta e sábado', time: '17h à 01h' },
     { days: 'Domingo a terça', time: 'Fechado' },
   ],
+  // Mesmo horário em formato de máquina: dia da semana (0 = domingo) → [abre, fecha] em horas.
+  // Fechamento depois da meia-noite é escrito como 25 (= 01h do dia seguinte).
+  schedule: { 3: [17, 24], 4: [17, 24], 5: [17, 25], 6: [17, 25] } as Record<number, [number, number]>,
 }
 
 export const nav = [
