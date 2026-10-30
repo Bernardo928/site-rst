@@ -1,0 +1,137 @@
+{
+  "fachada-noite": {
+    "w": 1215,
+    "h": 2188,
+    "widths": [
+      480,
+      720,
+      960,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAACQBgCdASoYACsAPu1mrVCppSQisBVYATAdiWQAvOBpX0+6nGZP/QTW4+9nGUInHPD0XpEfT0FZlSdeDPkAAP79Ae2cka2sbeGMuTKe+9kWhVYEdhXxgttTDA5Ip1cnULrx+9/KU6BQrNV5YDgGSBlVpe9m1ZO6Zk693SgXMBUr0hgZqYs/9pf3GNrjw5c4/W3/lfTjVQvg6dGRVrEuIJidV7jJgoSrj3TBVMV3UqsGppaNTuf+xWtTv0sDqadL0uhSQPe/6EIgAAAA"
+  },
+  "drink-cafe": {
+    "w": 1215,
+    "h": 1392,
+    "widths": [
+      480,
+      720,
+      960,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAAAwBgCdASoYABwAPu1oqU+ppiOiKA1RMB2JbACdMoR6eN2BN2Qav5G5lGmw5sQWC8BWjAJcHH7PUsYAAP7pWJ/C8F1weGVOZO3KZ1Hq3dFIF6CoUlLv7G8JglgWLbO7NdRKuEa1VwqbSZH3dIzBj+enLClKgEdzZLm0Nk+EVp5oIrnqiaOQje1o1I1CFIyxhMw3GARgxhIKjh1b3dObqEH+GXxODc6brmrkQQKGRpDSfbY8ooAAAA=="
+  },
+  "jardim-logo": {
+    "w": 1215,
+    "h": 676,
+    "widths": [
+      480,
+      720,
+      960,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADwAwCdASoYAA0APu1krU6ppaSiMAgBMB2JZACdAB07m2G5Y6Lp37IAAP3wU7qBBdwTSRC869/8wx/yEv4UyoY/NOjnb31P+7+EE7uxsPNCqyicnjbjSaMW8LAXPisx0DFzGjBAAAA="
+  },
+  "burger-fritas": {
+    "w": 1215,
+    "h": 1615,
+    "widths": [
+      480,
+      720,
+      960,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADwBACdASoYACAAPuFeqk2opSQiMAwBEBwJQBOmbIBprr5/PVKXEkwOgAgC4Y3WOaQA/vGE5R+bKL0FU85St1JnM0XB2F3mJoG06SufhnsGQd5PD0CJJcbGLUljcfFUCODqZIvkAfwdzVYZIuEgMXV5qpCmYAf0AAA="
+  },
+  "detalhe-letreiro": {
+    "w": 610,
+    "h": 280,
+    "widths": [
+      480,
+      610
+    ],
+    "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQAwCdASoYAAsAA4BaJbACdMoR3AFQvjs6UT4KqMDJB4AA/vb0Kz2DdMG/wKrx70sxH+Jijo0FUdInKmSqPOlcJfaKW5ZROs8oE97PobybeW87HIOE7PhCT902twVTupr2NgyQaS4Yc1+vd8u2BFfPLJzw0gAA"
+  },
+  "detalhe-porta": {
+    "w": 230,
+    "h": 500,
+    "widths": [
+      230
+    ],
+    "blur": "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAADwBgCdASoYADUAPu1ep06ppKMiMBgMATAdiUAWI/+ANXkJnJE3wSyHlvBdqAaDksy8Orjwsy+Pd6kcOHD2yyXAAP7vYKeQL/KDcAdD9+fHLpZB2mrEV9dHqz1jjEPz807APj9qnSyjbbmCodsicuGsau28fDTPrLpwJjAfS0eu2Y9JCTnfKRLmdQl65nX/xwAC9aMKIyXackKZ+w9IaQAwSRUEergAAAA="
+  },
+  "detalhe-ripado": {
+    "w": 1215,
+    "h": 250,
+    "widths": [
+      480,
+      720,
+      960,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAACwAwCdASoYAAUAPu1kqk2ppaQiMAgBMB2JQBOmUAFIskEAO4nYAAD+9b82ZrXlH6mqPWfND7wV8wr5jtpr8+b8SVw6jBpwvLeAAA=="
+  },
+  "detalhe-balcao": {
+    "w": 760,
+    "h": 540,
+    "widths": [
+      480,
+      760
+    ],
+    "blur": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADQBACdASoYABEAPu1iq0+ppSOiMBgIATAdiUATplmAL1/2vOPH067HiKi6FY03gAD+z3Au8OsJAtxPDNtsrK77laIwX6V22wVlp9FFaKQcxlI9iHh5r55ULgjYGRil3WjdyxrowHtcCnA61YemTsIsoS8LL3RQxOCwAA=="
+  },
+  "detalhe-samambaias": {
+    "w": 760,
+    "h": 340,
+    "widths": [
+      480,
+      760
+    ],
+    "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAABwAwCdASoYAAsALrV2u12jqampiYC0S0AE6AHZdxp8ch23T+QA/ndNSILkdaKtvGmWbLniROJXuTPXZuq3H801AfzIVp2hxqfbQyZ5S02ODg4E0Q1hcGYZUAA="
+  },
+  "menu-drinks": {
+    "w": 1215,
+    "h": 1719,
+    "widths": [
+      600,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADQBACdASoYACIAPuVkpk2pJiOiNVgIASAciWcA0FQWbbOKSJEjd2ZPyBZ5Uy0tAAD+7Vlc60hPs0gbk1HbdQF9f5ry7gjXu/MC6QIU5Fc2hTYAg8c6m3f3f3m8yHBHxuMmmMFydJS69AXL3RfQ9AAAAAA="
+  },
+  "menu-entradas": {
+    "w": 1215,
+    "h": 1722,
+    "widths": [
+      600,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAACwBACdASoYACIAPuVip02pJiOiMBqtUSAciWcAzBwWeMw3jg2IOjV2+Ac13XIQAP7rIyxBsYJISH1MDMlccrre0D/mML5UmMbl5Vz6aSZx56p/O91Zai/a+TiwPDLomTKJDkKeSAAAAA=="
+  },
+  "menu-porcoes": {
+    "w": 1215,
+    "h": 1718,
+    "widths": [
+      600,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAACQBACdASoYACIAPu1qq1AppiOiqrgMATAdiWcAyywLN20nNctYMUYtJkbaVyAA/usJ+TVsn3wlJGoLjvIQwmMfyMFmAcNqv6EsxBnANiv7e+9KOAxk706L73ATljKCAHTgAA=="
+  },
+  "menu-lanches": {
+    "w": 1215,
+    "h": 1735,
+    "widths": [
+      600,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAACwBACdASoYACIAPuVipE2pJaMiNVgIASAciWcAz6AWbbOKSJOJCW2ykYQrCgUAAP7tWVzrSE+zSBuTUdt1ASk4hmYmpFoQ1HQp6Hj+RNTYBAXgAWmHxCtltPlMDKw6xK8D3B7BhGdQzFpY6sx/lKikKdP5nW8AAAA="
+  },
+  "menu-sobremesa": {
+    "w": 1215,
+    "h": 899,
+    "widths": [
+      600,
+      1215
+    ],
+    "blur": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAwBACdASoYABIAPu1qsFAppaUiqAqpMB2JaQDGuBWEoJCUuDScFkjkn0AA/u/0olsFYXO33PRgya6iGjvIFPgA"
+  }
+}
